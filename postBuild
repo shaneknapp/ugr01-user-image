@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+set -e
+
 # installing chromium browser to enable webpdf conversion using nbconvert
 export PLAYWRIGHT_BROWSERS_PATH=${CONDA_DIR}
 playwright install chromium
+
+# As requested in slack.
+# http://www.dcc.fc.up.pt/gtries/
+# https://github.com/ComplexNetworks-DCC-FCUP/gtrieScanner
+cd /tmp
+wget https://www.dcc.fc.up.pt/gtries/gtrieScanner_src_01.zip
+unzip gtrieScanner_src_01.zip
+cd gtrieScanner_src_01
+make
+# CONDA_DIR is writable by our UID in postBuild. Ideally this would be
+# in /usr/local/bin/.
+install -m 0755 gtrieScanner ${CONDA_DIR}/bin/

@@ -58,7 +58,7 @@ jobs:
           # so all contents put in /home/jovyan are lost. This particularly prevents any 'start' script from
           # working, as it is needed in runtime.
           REPO_DIR: /srv/repo
-          APPENDIX_FILE: Dockerfile.appendix
+          APPENDIX_FILE: /srv/repo/Dockerfile.appendix
 
       # Lets us monitor disks getting full as images get bigger over time
       - name: Show how much disk space is left

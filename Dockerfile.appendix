@@ -1,0 +1,11 @@
+USER root
+
+# As requested in slack.
+# http://www.dcc.fc.up.pt/gtries/
+# https://github.com/ComplexNetworks-DCC-FCUP/gtrieScanner
+RUN wget -O /tmp/gtrieScanner.zip https://www.dcc.fc.up.pt/gtries/gtrieScanner_src_01.zip && \
+    unzip -d /tmp /tmp/gtrieScanner.zip && \
+    make -C /tmp/gtrieScanner_src_01 && \
+    install -o root -g root -m 0755 /tmp/gtrieScanner_src_01/gtrieScanner /usr/local/bin/
+
+USER $NB_USER

@@ -1,5 +1,4 @@
 # Basic unix tools
-less
 man
 man-db
 manpages-posix

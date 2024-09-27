@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # installing chromium browser to enable webpdf conversion using nbconvert
 export PLAYWRIGHT_BROWSERS_PATH=${CONDA_DIR}
 playwright install chromium

@@ -1,11 +1,11 @@
 USER root
 
 # xeus-octave complains when XDG_RUNTIME_DIR is not set.
-# We dynamically determine the UID, persist XDG_RUNTIME_DIR, and create the dir.
-RUN NB_USER_UID=$(id -u ${NB_USER}) && \
-    XDG_RUNTIME_DIR=/run/user/${NB_USER_UID} && \
-    echo "XDG_RUNTIME_DIR=/run/user/${NB_USER_UID}" >> /etc/environment && \
-    install -d -m 0700 -o ${NB_USER} -g ${NB_USER} ${XDG_RUNTIME_DIR}
+# We could dynamically determine the UID, use /run/user/${UID} as in systemd,
+# then set it in a shell initialization file, but we'd be essentially
+# hard-coding the shell.
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
+RUN install -d -m 0700 -o ${NB_USER} -g ${NB_USER} ${XDG_RUNTIME_DIR}
 
 # As requested in slack.
 # http://www.dcc.fc.up.pt/gtries/

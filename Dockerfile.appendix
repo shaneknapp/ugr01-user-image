@@ -16,11 +16,9 @@ RUN wget -O /tmp/gtrieScanner.zip https://www.dcc.fc.up.pt/gtries/gtrieScanner_s
     install -o root -g root -m 0755 /tmp/gtrieScanner_src_01/gtrieScanner /usr/local/bin/
 
 # Install octave-networks-toolbox
-RUN git clone --depth 1 \
-		https://github.com/aeolianine/octave-networks-toolbox \
+RUN git clone https://github.com/aeolianine/octave-networks-toolbox \
 		/srv/octave-networks-toolbox && \
 	cd /srv/octave-networks-toolbox/ && \
-	git fetch --depth 1 origin 3bfab48 && \
 	git checkout 3bfab48
 
 # Add octave-networks-toolbox to octave path

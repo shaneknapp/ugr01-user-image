@@ -43,3 +43,4 @@ dependencies:
 - pip:
   - git+https://github.com/shaneknapp/python-popularity-contest.git@add-error-handling
   - jupyter-remote-desktop-proxy==2.0.1
+  - jupyter_server_nbmodel[lab]
